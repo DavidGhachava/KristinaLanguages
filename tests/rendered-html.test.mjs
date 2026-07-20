@@ -35,7 +35,7 @@ test("ships contact, SEO, image, and accessibility assets", async () => {
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../README.md", import.meta.url), "utf8"),
-    access(new URL("../public/images/hero-studio-640.avif", import.meta.url)),
+    access(new URL("../public/images/hero-kristina-640.avif", import.meta.url)),
     access(new URL("../public/images/children-georgian-lesson-1600.webp", import.meta.url)),
     access(new URL("../public/kb-logo.png", import.meta.url)),
     access(new URL("../public/robots.txt", import.meta.url)),
