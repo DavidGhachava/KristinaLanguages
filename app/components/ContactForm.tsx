@@ -41,10 +41,10 @@ export function ContactForm() {
       <label className="honeypot" aria-hidden="true">Не заполнять<input name="_honey" tabIndex={-1} autoComplete="off" /></label>
       <label className="consent"><input type="checkbox" name="Согласие" value="Получено" aria-invalid={!!errors.consent} /><span>Соглашаюсь на использование указанных данных только для ответа на заявку. <b>*</b></span></label>
       {errors.consent && <small className="field-error block">{errors.consent}</small>}
-      <button className="button primary submit" type="submit" disabled={status === "loading"}>{status === "loading" ? <><LoaderCircle className="spin" aria-hidden="true" />Отправляем…</> : <><Send aria-hidden="true" />Узнать о свободных местах</>}</button>
+      <button className="button primary submit" type="submit" data-cta="form-submit" disabled={status === "loading"}>{status === "loading" ? <><LoaderCircle className="spin" aria-hidden="true" />Отправляем…</> : <><Send aria-hidden="true" />Узнать о свободных местах</>}</button>
       <p id="form-note" className="privacy-note">Данные не публикуются и используются только для связи по поводу занятий.</p>
       <div className={`form-status ${status}`} role="status" aria-live="polite">{status === "success" && "Спасибо! Заявка отправлена. Кристина свяжется с вами, чтобы обсудить свободные места и удобное время."}{status === "error" && <>Не удалось отправить заявку. Попробуйте ещё раз или <a href="https://wa.me/995571010750" target="_blank" rel="noreferrer">напишите Кристине в WhatsApp</a>.</>}</div>
     </form>
-    <a className="whatsapp-fallback" href="https://wa.me/995571010750" target="_blank" rel="noreferrer"><MessageCircle aria-hidden="true" /><span><strong>Удобнее в сообщениях?</strong>Написать Кристине в WhatsApp</span></a>
+    <a className="whatsapp-fallback" href="https://wa.me/995571010750" target="_blank" rel="me noreferrer" data-cta="whatsapp"><MessageCircle aria-hidden="true" /><span><strong>Удобнее в сообщениях?</strong>Написать Кристине в WhatsApp</span></a>
   </div>;
 }

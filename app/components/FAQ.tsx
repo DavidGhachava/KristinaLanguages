@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
@@ -16,5 +16,5 @@ const items = [
 
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0); const reduced = useReducedMotion();
-  return <div className="faq-list">{items.map(([question, answer], index) => { const expanded = open === index; return <div className="faq-item" key={question}><h3><button type="button" aria-expanded={expanded} aria-controls={`faq-${index}`} onClick={() => setOpen(expanded ? null : index)}><span>{question}</span><ChevronDown aria-hidden="true" /></button></h3><AnimatePresence initial={false}>{expanded && <motion.div id={`faq-${index}`} className="faq-answer" initial={reduced ? false : { height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={reduced ? undefined : { height: 0, opacity: 0 }} transition={{ duration: .25 }}><p>{answer}</p></motion.div>}</AnimatePresence></div>; })}</div>;
+  return <div className="faq-list">{items.map(([question, answer], index) => { const expanded = open === index; return <div className="faq-item" key={question}><h3><button type="button" aria-expanded={expanded} aria-controls={`faq-${index}`} onClick={() => setOpen(expanded ? null : index)}><span>{question}</span><ChevronDown aria-hidden="true" /></button></h3><AnimatePresence initial={false}>{expanded && <m.div id={`faq-${index}`} className="faq-answer" initial={reduced ? false : { height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={reduced ? undefined : { height: 0, opacity: 0 }} transition={{ duration: .25 }}><p>{answer}</p></m.div>}</AnimatePresence></div>; })}</div>;
 }

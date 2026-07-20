@@ -15,13 +15,16 @@ test("server-renders the completed Russian landing page", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
   assert.match(html, /<html lang="ru">/i);
-  assert.match(html, /<title>Уроки грузинского языка в Батуми — Кристина Беридзе<\/title>/i);
-  assert.match(html, /<h1[^>]*>Заговорите по-грузински/);
+  assert.match(html, /<title>Уроки грузинского в Батуми — Кристина Беридзе<\/title>/i);
+  assert.match(html, /<h1[^>]*>Уроки грузинского в Батуми/);
   assert.equal((html.match(/<h1\b/g) ?? []).length, 1);
   assert.match(html, /https:\/\/kristinalanguages\.com\/og\.png/);
   assert.match(html, /application\/ld\+json/);
   assert.match(html, /20 ₾/);
   assert.match(html, /https:\/\/wa\.me\/995571010750/);
+  assert.match(html, /https:\/\/www\.facebook\.com\/kristina\.beridze\.3/);
+  assert.match(html, /name="robots" content="index, follow/);
+  assert.match(html, /rel="manifest" href="https:\/\/kristinalanguages\.com\/site\.webmanifest"/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/);
 });
 
@@ -31,8 +34,8 @@ test("ships contact, SEO, image, and accessibility assets", async () => {
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../README.md", import.meta.url), "utf8"),
-    access(new URL("../public/images/hero-studio.avif", import.meta.url)),
-    access(new URL("../public/images/group-lesson.webp", import.meta.url)),
+    access(new URL("../public/images/hero-studio-640.avif", import.meta.url)),
+    access(new URL("../public/images/children-georgian-lesson-1600.webp", import.meta.url)),
     access(new URL("../public/robots.txt", import.meta.url)),
     access(new URL("../public/sitemap.xml", import.meta.url)),
   ]);
@@ -44,5 +47,8 @@ test("ships contact, SEO, image, and accessibility assets", async () => {
   assert.match(css, /:focus-visible/);
   assert.match(page, /canonical: "https:\/\/kristinalanguages\.com\/"/);
   assert.match(page, /"@type": "Service"/);
+  assert.match(page, /"@type": "WebSite"/);
+  assert.match(page, /"@type": "WebPage"/);
+  assert.match(page, /"@type": "Offer"/);
   assert.match(readme, /письмо активации/i);
 });
