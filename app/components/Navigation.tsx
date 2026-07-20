@@ -1,6 +1,7 @@
 "use client";
 
 import { BookOpenCheck, LayoutGrid, Mail, Menu, MessageSquareHeart, UserRound, UsersRound, X } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import { FaFacebookF, FaWhatsapp } from "react-icons/fa6";
@@ -23,7 +24,7 @@ export function Navigation() {
   useEffect(() => { const close = (event: KeyboardEvent) => { if (event.key === "Escape") setOpen(false); }; addEventListener("keydown", close); return () => removeEventListener("keydown", close); }, []);
   return <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
     <div className="nav-container">
-      <a className="wordmark" href="#top" aria-label="Кристина Беридзе — на главную"><span>KB</span><strong>Кристина Беридзе</strong></a>
+      <a className="wordmark" href="#top" aria-label="Кристина Беридзе — на главную"><Image className="brand-logo" src="/kb-logo.png" alt="" width="38" height="38" priority unoptimized /><strong>Кристина Беридзе</strong></a>
       <nav className="desktop-nav" aria-label="Основная навигация">{links.map(({ label, href }) => <a key={href} href={href}>{label}</a>)}</nav>
       <div className="nav-cta"><PrimaryLink small>Узнать о местах</PrimaryLink></div>
       <button className="menu-toggle" type="button" aria-label={open ? "Закрыть меню" : "Открыть меню"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>

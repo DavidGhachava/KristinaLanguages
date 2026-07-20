@@ -23,6 +23,7 @@ test("server-renders the completed Russian landing page", async () => {
   assert.match(html, /20 ₾/);
   assert.match(html, /https:\/\/wa\.me\/995571010750/);
   assert.match(html, /https:\/\/www\.facebook\.com\/kristina\.beridze\.3/);
+  assert.match(html, /src="\/kb-logo\.png"/);
   assert.match(html, /name="robots" content="index, follow/);
   assert.match(html, /rel="manifest" href="https:\/\/kristinalanguages\.com\/site\.webmanifest"/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/);
@@ -36,6 +37,7 @@ test("ships contact, SEO, image, and accessibility assets", async () => {
     readFile(new URL("../README.md", import.meta.url), "utf8"),
     access(new URL("../public/images/hero-studio-640.avif", import.meta.url)),
     access(new URL("../public/images/children-georgian-lesson-1600.webp", import.meta.url)),
+    access(new URL("../public/kb-logo.png", import.meta.url)),
     access(new URL("../public/robots.txt", import.meta.url)),
     access(new URL("../public/sitemap.xml", import.meta.url)),
   ]);
