@@ -49,7 +49,7 @@ const structuredData = {
       inLanguage: "ru",
       isPartOf: { "@id": "https://kristinalanguages.com/#website" },
       about: { "@id": "https://kristinalanguages.com/#lessons" },
-      primaryImageOfPage: { "@type": "ImageObject", url: "https://kristinalanguages.com/images/hero-studio-1600.webp", width: 1600, height: 1067 },
+      primaryImageOfPage: { "@type": "ImageObject", url: "https://kristinalanguages.com/images/hero-kristina-1600.webp", width: 1600, height: 1067 },
     },
     {
       "@type": "Person",
